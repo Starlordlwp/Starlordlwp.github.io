@@ -1,142 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Logan Pooran | IT & Cybersecurity</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Logan Pooran | IT & Cybersecurity</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      background: #f8fafc;
-      color: #1e293b;
-      line-height: 1.6;
-    }
+<style>
+:root {
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --card: #ffffff;
+  --accent: #2563eb;
+}
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
-    }
+.dark {
+  --bg: #0f172a;
+  --text: #e2e8f0;
+  --card: #1e293b;
+}
 
-    h1 {
-      font-size: 42px;
-      margin-bottom: 5px;
-    }
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  transition: all 0.3s ease;
+}
 
-    .subtitle {
-      font-size: 18px;
-      color: #64748b;
-      margin-bottom: 30px;
-    }
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+}
 
-    h2 {
-      margin-top: 50px;
-      border-bottom: 2px solid #e2e8f0;
-      padding-bottom: 8px;
-    }
+h1 { font-size: 42px; margin-bottom: 5px; }
 
-    .project {
-      margin-bottom: 25px;
-      padding: 15px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
+.subtitle { color: #64748b; margin-bottom: 30px; }
 
-    ul {
-      padding-left: 20px;
-    }
+h2 {
+  margin-top: 60px;
+  border-bottom: 2px solid #334155;
+  padding-bottom: 8px;
+}
 
-    .skills {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 10px;
-    }
+.project {
+  margin-bottom: 25px;
+  padding: 20px;
+  background: var(--card);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.6s ease;
+}
 
-    .skill-box {
-      background: white;
-      padding: 10px;
-      border-radius: 6px;
-      box-shadow: 0 1px 5px rgba(0,0,0,0.05);
-      text-align: center;
-    }
+.project.show { transform: translateY(0); opacity: 1; }
 
-    .contact a {
-      text-decoration: none;
-      color: #2563eb;
-      font-weight: 600;
-    }
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
 
-    footer {
-      text-align: center;
-      margin-top: 60px;
-      color: #94a3b8;
-      font-size: 14px;
-    }
-  </style>
+.skill-box {
+  background: var(--card);
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.skill-box:hover { transform: scale(1.05); }
+
+.contact a { color: var(--accent); font-weight: 600; text-decoration: none; }
+
+button {
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.resume-btn { background: var(--accent); color: white; }
+
+.toggle-btn { background: #64748b; color: white; }
+
+footer { text-align: center; margin-top: 60px; font-size: 14px; opacity: 0.7; }
+</style>
 </head>
 
 <body>
-  <div class="container">
+<div class="container">
 
-    <h1>Logan Pooran</h1>
-    <p class="subtitle">IT & Cybersecurity Student • Policy Analysis • Risk & Security Focus</p>
+<h1>Logan Pooran</h1>
+<p class="subtitle">IT & Cybersecurity Student • Policy Analysis • Risk & Security Focus</p>
 
-    <h2>About Me</h2>
-    <p>
-      Cybersecurity student focused on strengthening organizational security through policy analysis, 
-      risk assessment, and technical problem-solving. I enjoy translating complex technical issues into 
-      clear, actionable solutions that improve security posture and governance.
-    </p>
+<button class="resume-btn" onclick="window.open('resume.pdf')">📄 Download Resume</button>
+<button class="toggle-btn" onclick="toggleDark()">🌙 Dark Mode</button>
 
-    <h2>Projects</h2>
+<h2>About Me</h2>
+<p>
+Cybersecurity student focused on strengthening organizational security through policy analysis,
+risk assessment, and technical problem-solving. I enjoy translating complex technical issues into
+clear, actionable solutions.
+</p>
 
-    <div class="project">
-      <h3>Public IT Policy Review – Snohomish County (Capstone)</h3>
-      <ul>
-        <li>Reviewed public IT policies and benchmarked against NIST Cybersecurity Framework</li>
-        <li>Identified gaps in incident response, access control, and governance</li>
-        <li>Developed recommendations to improve risk management and compliance posture</li>
-      </ul>
-    </div>
+<h2>Projects</h2>
 
-    <div class="project">
-      <h3>Cross-County IT Policy Comparison</h3>
-      <ul>
-        <li>Compared IT governance practices across Washington counties</li>
-        <li>Analyzed strengths, weaknesses, and missing security controls</li>
-        <li>Collaborated with data analytics students to support policy evaluation</li>
-      </ul>
-    </div>
+<div class="project">
+<h3>Public IT Policy Review – Snohomish County</h3>
+<ul>
+<li>Benchmarked county IT policies against NIST CSF</li>
+<li>Identified gaps in access control and incident response</li>
+<li>Delivered governance and risk improvement recommendations</li>
+</ul>
+</div>
 
-    <h2>Skills</h2>
+<div class="project">
+<h3>Cross-County IT Policy Comparison</h3>
+<ul>
+<li>Analyzed security governance practices across Washington counties</li>
+<li>Compared strengths, weaknesses, and missing controls</li>
+<li>Collaborated with data analytics students to support evaluation</li>
+</ul>
+</div>
 
-    <div class="skills">
-      <div class="skill-box">Risk Assessment</div>
-      <div class="skill-box">NIST CSF</div>
-      <div class="skill-box">Policy Analysis</div>
-      <div class="skill-box">Security Governance</div>
-      <div class="skill-box">Technical Documentation</div>
-      <div class="skill-box">Problem Solving</div>
-      <div class="skill-box">Team Collaboration</div>
-      <div class="skill-box">IT Fundamentals</div>
-    </div>
+<div class="project">
+<h3>Machine Learning Project</h3>
+<ul>
+<li>Built a machine learning model to analyze patterns and make predictions</li>
+<li>Performed data preprocessing, feature selection, and model evaluation</li>
+<li>Improved accuracy through iterative testing and parameter tuning</li>
+<li>Tools: Python, Pandas, Scikit-learn</li>
+</ul>
+</div>
 
-    <h2>Contact</h2>
-    <p class="contact">
-      📧 Email: <a href="mailto:youremail@example.com">youremail@example.com</a><br>
-      💼 LinkedIn: <a href="#">Your LinkedIn Link</a><br>
-      💻 GitHub: <a href="https://github.com/yourusername">github.com/yourusername</a>
-    </p>
+<h2>Skills</h2>
+<div class="skills">
+<div class="skill-box">Risk Assessment</div>
+<div class="skill-box">NIST CSF</div>
+<div class="skill-box">Policy Analysis</div>
+<div class="skill-box">Python</div>
+<div class="skill-box">Machine Learning</div>
+<div class="skill-box">Technical Documentation</div>
+<div class="skill-box">Security Governance</div>
+<div class="skill-box">Problem Solving</div>
+</div>
 
-    <footer>
-      © 2026 Logan Pooran
-    </footer>
+<h2>Contact</h2>
+<p class="contact">
+📧 <a href="mailto:logan.pooran@gmail.com">youremail@example.com</a><br>
+💼 <a href="#">LinkedIn</a><br>
+💻 <a href="https://github.com/starlordlwp">GitHub</a>
+</p>
 
-  </div>
+<footer>© 2026 Logan Pooran</footer>
+</div>
+
+<script>
+function toggleDark() {
+  document.body.classList.toggle("dark");
+}
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) entry.target.classList.add("show");
+  });
+});
+
+document.querySelectorAll('.project').forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
