@@ -28,7 +28,42 @@ body {
   color: var(--text);
   line-height: 1.6;
   transition: all 0.3s ease;
+  scroll-behavior: smooth;
 }
+
+/* NAVBAR */
+.nav {
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(10px);
+  padding: 12px;
+  text-align: center;
+  z-index: 1000;
+}
+
+.nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 90px 20px 70px;
+  background: linear-gradient(135deg, #2563eb, #1e3a8a);
+  color: white;
+  border-radius: 0 0 40px 40px;
+  opacity: 0;
+  transition: opacity 1.2s ease-in;
+}
+
+.hero h1 { font-size: 48px; margin-bottom: 10px; }
+.hero p { font-size: 18px; opacity: 0.9; }
+
+.hero-buttons { margin-top: 20px; }
 
 .container {
   max-width: 900px;
@@ -36,29 +71,37 @@ body {
   padding: 40px 20px;
 }
 
-h1 { font-size: 42px; margin-bottom: 5px; }
-
-.subtitle { color: #64748b; margin-bottom: 30px; }
+section { margin-top: 80px; }
 
 h2 {
-  margin-top: 60px;
+  font-size: 28px;
   border-bottom: 2px solid #334155;
   padding-bottom: 8px;
 }
 
+/* PROJECT CARDS */
 .project {
-  margin-bottom: 25px;
-  padding: 20px;
+  margin-bottom: 30px;
+  padding: 25px;
   background: var(--card);
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  transform: translateY(20px);
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transform: translateY(30px);
   opacity: 0;
-  transition: all 0.6s ease;
 }
 
-.project.show { transform: translateY(0); opacity: 1; }
+.project.show {
+  transform: translateY(0);
+  opacity: 1;
+}
 
+.project:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+/* SKILLS */
 .skills {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -86,8 +129,7 @@ button {
   margin-right: 10px;
 }
 
-.resume-btn { background: var(--accent); color: white; }
-
+.resume-btn { background: white; color: #1e3a8a; }
 .toggle-btn { background: #64748b; color: white; }
 
 footer { text-align: center; margin-top: 60px; font-size: 14px; opacity: 0.7; }
@@ -95,21 +137,35 @@ footer { text-align: center; margin-top: 60px; font-size: 14px; opacity: 0.7; }
 </head>
 
 <body>
+
+<nav class="nav">
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#skills">Skills</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<div class="hero">
+  <h1>Logan Pooran</h1>
+  <p>IT & Cybersecurity Student • Policy Analysis • Machine Learning</p>
+  <div class="hero-buttons">
+    <button class="resume-btn" onclick="window.open('resume.pdf')">📄 Resume</button>
+    <button class="toggle-btn" onclick="toggleDark()">🌙 Dark Mode</button>
+  </div>
+</div>
+
 <div class="container">
 
-<h1>Logan Pooran</h1>
-<p class="subtitle">IT & Cybersecurity Student • Policy Analysis • Risk & Security Focus</p>
-
-<button class="resume-btn" onclick="window.open('resume.pdf')">📄 Download Resume</button>
-<button class="toggle-btn" onclick="toggleDark()">🌙 Dark Mode</button>
-
+<section id="about">
 <h2>About Me</h2>
 <p>
 Cybersecurity student focused on strengthening organizational security through policy analysis,
 risk assessment, and technical problem-solving. I enjoy translating complex technical issues into
 clear, actionable solutions.
 </p>
+</section>
 
+<section id="projects">
 <h2>Projects</h2>
 
 <div class="project">
@@ -139,7 +195,9 @@ clear, actionable solutions.
 <li>Tools: Python, Pandas, Scikit-learn</li>
 </ul>
 </div>
+</section>
 
+<section id="skills">
 <h2>Skills</h2>
 <div class="skills">
 <div class="skill-box">Risk Assessment</div>
@@ -153,18 +211,23 @@ clear, actionable solutions.
 <div class="skill-box">Communication</div>
 <div class="skill-box">Problem Solving</div>
 </div>
+</section>
 
+<section>
 <h2>Certifications</h2>
 <div class="skills">
   <div class="skill-box">ISC2 Certified in Cybersecurity (CC)</div>
 </div>
+</section>
   
+<section id="contact">
 <h2>Contact</h2>
 <p class="contact">
-📧 <a href="mailto:logan.pooran@gmail.com">Email: logan.pooran@gmail.com</a><br>
-💼 <a href="https://www.linkedin.com/in/logan-pooran-328744329/" target="_blank">LinkedIn: Logan Pooran</a><br>
-💻 <a href="https://github.com/starlordlwp">Github: Starlordlwp</a>
+📧 <a href="mailto:logan.pooran@gmail.com">Email</a><br>
+💼 <a href="https://www.linkedin.com/in/logan-pooran-328744329/" target="_blank">LinkedIn</a><br>
+💻 <a href="https://github.com/starlordlwp" target="_blank">GitHub</a>
 </p>
+</section>
 
 <footer>© 2026 Logan Pooran</footer>
 </div>
@@ -173,6 +236,10 @@ clear, actionable solutions.
 function toggleDark() {
   document.body.classList.toggle("dark");
 }
+
+window.addEventListener("load", () => {
+  document.querySelector('.hero').style.opacity = 1;
+});
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
