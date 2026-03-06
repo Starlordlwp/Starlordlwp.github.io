@@ -115,14 +115,18 @@ h2 {
 }
 
 .skill-box {
-  background: var(--card);
-  padding: 12px;
-  border-radius: 6px;
+   background: linear-gradient(135deg, #eff6ff, #ffffff);
+  padding: 14px;
+  border-radius: 8px;
   text-align: center;
-  transition: transform 0.2s ease;
+  transition: all 0.25s ease;
+  border: 1px solid rgba(0,0,0,0.05);
 }
 
-.skill-box:hover { transform: scale(1.05); }
+.skill-box:hover { 
+ transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
 
 .contact a { color: var(--accent); font-weight: 600; text-decoration: none; }
 
