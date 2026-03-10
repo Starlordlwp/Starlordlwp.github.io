@@ -29,8 +29,6 @@ body {
   line-height: 1.6;
   transition: all 0.3s ease;
   scroll-behavior: smooth;
-  background-image: radial-gradient(circle at 20% 20%, rgba(37,99,235,0.05), transparent 40%),
-                  radial-gradient(circle at 80% 60%, rgba(37,99,235,0.05), transparent 40%);
 }
 
 /* NAVBAR */
@@ -145,6 +143,38 @@ button {
 .toggle-btn { background: #64748b; color: white; }
 
 footer { text-align: center; margin-top: 60px; font-size: 14px; opacity: 0.7; }
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: all 0.8s ease;
+}
+
+.fade-left.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: all 0.8s ease;
+}
+
+.fade-right.show {
+  opacity: 1;
+  transform: translateX(0);
+}
 </style>
 </head>
 
@@ -169,7 +199,7 @@ footer { text-align: center; margin-top: 60px; font-size: 14px; opacity: 0.7; }
 
 <div class="container">
 
-<section id="about">
+<section id="about" class="fade-up">
 <h2>About Me</h2>
 <p>
 Cybersecurity student focused on strengthening organizational security through policy analysis,
@@ -178,10 +208,10 @@ clear, actionable solutions.
 </p>
 </section>
 
-<section id="projects">
+<section id="projects" class"fade-up>
 <h2>Projects</h2>
 
-<div class="project">
+<div class="project" class="fade-left">
 <h3>IT Policy Consulting – Snohomish County</h3>
 <ul>
 <li>Benchmarked county IT policies against NIST CSF</li>
@@ -193,7 +223,7 @@ clear, actionable solutions.
 </ul>
 </div>
 
-<div class="project">
+<div class="project" class="fade-right">
 <h3>WSU 2026 Hackathon</h3>
 <ul>
 <li>Worked with other majors to develop a theme, plan prizes and purchase supplies</li>
@@ -214,7 +244,7 @@ clear, actionable solutions.
 </div>
 </section>
 
-<section id="skills">
+<section id="skills" class="fade-up">
 <h2>Skills</h2>
 <div class="skills">
 <div class="skill-box">Risk Assessment</div>
@@ -274,7 +304,9 @@ const observer = new IntersectionObserver(entries => {
   });
 });
 
-document.querySelectorAll('.project').forEach(el => observer.observe(el));
+//document.querySelectorAll('.project').forEach(el => observer.observe(el));
+document.querySelectorAll('.fade-up, .fade-left, .fade-right')
+  .forEach(el => observer.observe(el));
 </script>
 
 </body>
