@@ -93,14 +93,14 @@ h2 {
   border-radius: 14px;
   border: 1px solid rgba(0,0,0,0.05);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  /* transform: translateY(30px); */
-  /* opacity: 0; */
+  transform: translateY(30px);
+  opacity: 0;
 }
 
-/* .project.show {
+ .project.show {
   transform: translateY(0);
   opacity: 1;
-} */
+} 
 
 .project:hover {
   transform: translateY(-6px);
@@ -148,33 +148,6 @@ footer { text-align: center; margin-top: 60px; font-size: 14px; opacity: 0.7; }
   transform: translateY(40px);
   transition: all 0.8s ease;
 }
-
-.fade-up.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.fade-left {
-  opacity: 0;
-  transform: translateX(-40px);
-  transition: all 0.8s ease;
-}
-
-.fade-left.show {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.fade-right {
-  opacity: 0;
-  transform: translateX(40px);
-  transition: all 0.8s ease;
-}
-
-.fade-right.show {
-  opacity: 1;
-  transform: translateX(0);
-}
 </style>
 </head>
 
@@ -199,7 +172,7 @@ footer { text-align: center; margin-top: 60px; font-size: 14px; opacity: 0.7; }
 
 <div class="container">
 
-<section id="about" class="fade-up">
+<section id="about">
 <h2>About Me</h2>
 <p>
 Cybersecurity student focused on strengthening organizational security through policy analysis,
@@ -208,10 +181,10 @@ clear, actionable solutions.
 </p>
 </section>
 
-<section id="projects" class"fade-up">
+<section id="projects">
 <h2>Projects</h2>
 
-<div class="project fade-left">
+<div class="project">
 <h3>IT Policy Consulting – Snohomish County</h3>
 <ul>
 <li>Benchmarked county IT policies against NIST CSF</li>
@@ -223,7 +196,7 @@ clear, actionable solutions.
 </ul>
 </div>
 
-<div class="project fade-right">
+<div class="project">
 <h3>WSU 2026 Hackathon</h3>
 <ul>
 <li>Worked with other majors to develop a theme, plan prizes and purchase supplies</li>
@@ -232,7 +205,7 @@ clear, actionable solutions.
 </ul>
 </div>
 
-<div class="project fade-up">
+<div class="project">
 <h3>Malware Machine Learning Project</h3>
 <ul>
 <li>Built a machine learning model to analyze malware from datasets like EMBER2024 and Microsoft Malware Classification.</li>
@@ -244,7 +217,7 @@ clear, actionable solutions.
 </div>
 </section>
 
-<section id="skills" class="fade-up">
+<section id="skills">
 <h2>Skills</h2>
 <div class="skills">
 <div class="skill-box">Risk Assessment</div>
@@ -304,9 +277,7 @@ const observer = new IntersectionObserver(entries => {
   });
 });
 
-//document.querySelectorAll('.project').forEach(el => observer.observe(el));
-document.querySelectorAll('.fade-up, .fade-left, .fade-right')
-  .forEach(el => observer.observe(el));
+document.querySelectorAll('.project').forEach(el => observer.observe(el));
 </script>
 
 </body>
